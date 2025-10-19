@@ -3,9 +3,16 @@
 #include <stdio.h>
 
 int main(){
-	int i=3, j=4, k=5;
-	printf("%d\n", i++ - j++ + --k);
-	printf("%d %d %d\n", i, j, k);
+	int digit;
+	long n;
+
+	printf("Enter your number: ");
+	scanf("%ld", &n);
+
+	digit = n % 10;
+	printf("%d", digit);
+
+
 	return 0;
 }
 
