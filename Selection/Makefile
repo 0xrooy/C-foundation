@@ -1,7 +1,6 @@
 # Selection/Makefile
 # Automatically compiles all .c files in src/ into build/ and bin/
 
-
 # Compiler settings
 CC = gcc
 CFLAGS = -Wall -Wextra -std=c11
@@ -21,21 +20,21 @@ all: $(EXE)
 
 # Link object file -> executable (ensure bin exists)
 $(BIN_DIR)/%: $(BUILD_DIR)/%.o | $(BIN_DIR)
-        $(CC) $(CFLAGS) $< -o $@
+	$(CC) $(CFLAGS) $< -o $@
 
 # Compile source -> object file (ensure build exists)
 $(BUILD_DIR)/%.o: $(SRC_DIR)/%.c | $(BUILD_DIR)
-        $(CC) $(CFLAGS) -c $< -o $@
+	$(CC) $(CFLAGS) -c $< -o $@
 
 # Automatically create bin/ and build/ directories
 $(BIN_DIR) $(BUILD_DIR):
-        mkdir -p $@
+	mkdir -p $@
 
 # Clean compiled files
 clean:
-        rm -rf $(BUILD_DIR) $(BIN_DIR)
+	rm -rf $(BUILD_DIR) $(BIN_DIR)
 
 # Optional: run the first compiled program
 run: all
-        @echo "Running $(firstword $(EXE))..."
-        @$(firstword $(EXE))
+	@echo "Running $(firstword $(EXE))..."
+	@$(firstword $(EXE))
